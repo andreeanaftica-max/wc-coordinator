@@ -1190,6 +1190,25 @@ function dkey(d) {
   return `${d.getMonth()+1}-${d.getDate()}`;
 }
 
+// Convert "M-D" key (e.g. "6-15") to display format "June 15"
+function fmtMD(key) {
+  if (!key || key === 'TBD' || key.startsWith('TBD')) return key || 'TBD';
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const parts = String(key).trim().split(' ')[0].split('-');
+  if (parts.length !== 2) return key;
+  const m = parseInt(parts[0], 10), d = parseInt(parts[1], 10);
+  if (isNaN(m) || isNaN(d) || m < 1 || m > 12) return key;
+  return `${monthNames[m - 1]} ${d}`;
+}
+// Variant that keeps any " HH:MM" trailing time
+function fmtMDTime(s) {
+  if (!s) return '';
+  if (s.startsWith('TBD')) return s;
+  const bits = s.split(' ');
+  const datePart = fmtMD(bits[0]);
+  return bits.length > 1 ? `${datePart} ${bits.slice(1).join(' ')}` : datePart;
+}
+
 // ─────────────────────────────────────────────────────────
 // WC FIXTURES — real schedule from FIFA WC 2026 sheet (Greek time)
 // ─────────────────────────────────────────────────────────
@@ -1495,7 +1514,7 @@ function horizontalPromo(d) {
 }
 
 function fmtDate(d) {
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   return months[d.getMonth()] + ' ' + d.getDate();
 }
 
@@ -2416,7 +2435,7 @@ function dayData(d) {
   // Raffles being added to shop today
   const raffleAdded = RAFFLES.filter(r => r.added === dkey(d));
   raffleAdded.forEach(r => {
-    data.setup.iliasGiorgos.push(`New raffle added to SuperCoins Shop: ${r.prize} (${r.cost} SuperCoins entry, draws ${r.draw})`);
+    data.setup.iliasGiorgos.push(`New raffle added to SuperCoins Shop: ${r.prize} (${r.cost} SuperCoins entry, draws ${fmtMDTime(r.draw)})`);
   });
 
   // SuperSocial (when relevant)
@@ -2506,10 +2525,7 @@ function buildDayCard(d) {
     const tmrwKey = dkey(tomorrow);
     if (matchInfo.dateKey === todayKey) return ` @ ${matchInfo.time} today`;
     if (matchInfo.dateKey === tmrwKey) return ` @ ${matchInfo.time} tomorrow`;
-    // Other days
-    const [mm, dd] = matchInfo.dateKey.split('-').map(Number);
-    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    return ` @ ${matchInfo.time} ${monthNames[mm-1]} ${dd}`;
+    return ` @ ${matchInfo.time} ${fmtMD(matchInfo.dateKey)}`;
   }
 
   if (data.oneUp && !data.oneUp.startsWith('__')) {
@@ -2588,7 +2604,7 @@ function buildDayCard(d) {
     raffleBits.push(`<span style="color:#C62828;font-weight:700">🏆 DRAW @ 17:00:</span> ${rDrawsToday.map(r => r.prize).join(' + ')}`);
   }
   if (rNewToday.length > 0) {
-    raffleBits.push(`<span style="color:#2E7D32;font-weight:700">🆕 NEW:</span> ${rNewToday.map(r => `${r.prize} (${r.cost} SuperCoins, draws ${r.draw.split(' ')[0]})`).join(' · ')}`);
+    raffleBits.push(`<span style="color:#2E7D32;font-weight:700">🆕 NEW:</span> ${rNewToday.map(r => `${r.prize} (${r.cost} SuperCoins, draws ${fmtMD(r.draw)})`).join(' · ')}`);
   }
   // Show 1-2 active raffles if there's still room
   if (raffleBits.length === 0 && rActive.length > 0) {
