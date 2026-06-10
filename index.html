@@ -1357,22 +1357,34 @@ const WC_FIXTURES = {
   '7-19': [{ time: 'TBD', match: 'FINAL (TBD)' }]
 };
 
-// Computed dynamically — overlays product tags (1up, Triliza, SP, SB) on each fixture
+// Computed dynamically — overlays product tags on each fixture playing today
 function MATCHES_TODAY_FN(d) {
   const fixtures = WC_FIXTURES[dkey(d)];
   if (!fixtures || fixtures.length === 0) return null;
   const trilizaFx = TRILIZA[dkey(d)];
   const sp = predictorRound(d);
-  const oneUp = oneUpFor(d);
   const sbm = speedBattleMatch(d);
-  const oneUpClean = oneUp && !oneUp.startsWith('__') ? oneUp.replace(/ \(.*$/, '') : null;
-  const koH = trilizaFx && trilizaFx.time !== 'TBD' ? trilizaFx.time : null;
-  const dayKey = dkey(d);
+
+  // 1up offered YESTERDAY is for a match playing TODAY (day-before rule)
+  const yesterday = new Date(d); yesterday.setDate(d.getDate() - 1);
+  const yd1up = oneUpFor(yesterday);
+  const yd1upClean = yd1up && !yd1up.startsWith('__') ? yd1up.replace(/ \(.*$/, '') : null;
+
+  // Promo text (limited-time onsite offer) — used to detect Promo-tagged matches
+  const promoText = (horizontalPromo(d) || '').toLowerCase();
+
+  function matchEq(matchString, target) {
+    if (!target) return false;
+    const parts = target.toLowerCase().split(' vs ');
+    if (parts.length < 2) return false;
+    const m = matchString.toLowerCase();
+    return m.includes(parts[0]) && m.includes(parts[1]);
+  }
+
   return fixtures.map(fx => {
     const tags = [];
-    // 1up match
-    if (oneUpClean && fx.match.toLowerCase().includes(oneUpClean.toLowerCase().split(' vs ')[0])
-        && fx.match.toLowerCase().includes(oneUpClean.toLowerCase().split(' vs ')[1])) {
+    // 1up — match playing today was the 1up offer from yesterday
+    if (matchEq(fx.match, yd1upClean)) {
       tags.push('1up');
       tags.push('Boosted Odds');
     }
@@ -1381,17 +1393,20 @@ function MATCHES_TODAY_FN(d) {
       tags.push(`Triliza #${trilizaRound(d)}`);
       tags.push('Sportsbook mission');
     }
-    // SP match
+    // SuperPredictor match
     if (sp && sp.match && fx.match === sp.match) {
-      tags.push(`SuperPredictor MD${sp.num <= 3 ? sp.num : ''}`);
+      tags.push(`SuperPredictor MD${sp.num <= 3 ? sp.num : ''}`.trim().replace(/MD$/, '').trim());
     }
     // Speed Battles
     if (sbm) {
       const sbmShort = sbm.replace(' (HT)','');
-      if (fx.match.toLowerCase().includes(sbmShort.toLowerCase().split(' vs ')[0])
-          && fx.match.toLowerCase().includes(sbmShort.toLowerCase().split(' vs ')[1])) {
-        tags.push('Speed Battle HT');
-      }
+      if (matchEq(fx.match, sbmShort)) tags.push('Speed Battle HT');
+    }
+    // LP Promo — limited-time onsite offer mentions this match
+    const matchParts = fx.match.toLowerCase().split(' vs ');
+    if (promoText && matchParts.length === 2
+        && promoText.includes(matchParts[0]) && promoText.includes(matchParts[1])) {
+      tags.push('LP Promo');
     }
     // Marquee
     if (['Brazil','Argentina','France','Germany','England','Spain','Portugal','Netherlands'].some(t => fx.match.includes(t))
@@ -2425,8 +2440,39 @@ function buildDayCard(d) {
 
   // Context strip
   let ctxRows = [];
+  // Helper: find when a match plays in WC_FIXTURES (returns "Date @ time" or empty)
+  function findMatchKO(matchName) {
+    if (!matchName) return '';
+    const clean = matchName.replace(/ \(.*$/, '').trim().toLowerCase();
+    const parts = clean.split(' vs ');
+    if (parts.length < 2) return '';
+    for (const k of Object.keys(WC_FIXTURES)) {
+      for (const fx of WC_FIXTURES[k]) {
+        const fxLower = fx.match.toLowerCase();
+        if (fxLower.includes(parts[0]) && fxLower.includes(parts[1])) {
+          return { dateKey: k, time: fx.time };
+        }
+      }
+    }
+    return '';
+  }
+  function fmtKOLabel(matchInfo, d) {
+    if (!matchInfo) return '';
+    const todayKey = dkey(d);
+    const tomorrow = new Date(d); tomorrow.setDate(d.getDate() + 1);
+    const tmrwKey = dkey(tomorrow);
+    if (matchInfo.dateKey === todayKey) return ` @ ${matchInfo.time} today`;
+    if (matchInfo.dateKey === tmrwKey) return ` @ ${matchInfo.time} tomorrow`;
+    // Other days
+    const [mm, dd] = matchInfo.dateKey.split('-').map(Number);
+    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return ` @ ${matchInfo.time} ${monthNames[mm-1]} ${dd}`;
+  }
+
   if (data.oneUp && !data.oneUp.startsWith('__')) {
-    ctxRows.push(`<div class="ctx-row"><span class="label">1UP</span><span class="value">${data.oneUp}</span></div>`);
+    const oneUpKO = findMatchKO(data.oneUp);
+    const koLabel = fmtKOLabel(oneUpKO, d);
+    ctxRows.push(`<div class="ctx-row"><span class="label">1UP</span><span class="value">${data.oneUp}<span style="color:#586069;font-size:9.5px">${koLabel}</span></span></div>`);
   } else if (data.oneUp === '__TBD_DAILY__') {
     ctxRows.push(`<div class="ctx-row"><span class="label">1UP</span><span class="value"><span class="tbd-inline">Anastasis daily pick</span></span></div>`);
   } else if (data.oneUp === '__TBD_SF1__') {
@@ -2444,7 +2490,15 @@ function buildDayCard(d) {
     ctxRows.push(`<div class="ctx-row"><span class="label triliza">TRILIZA</span><span class="value">Round #${data.triliza}${fxText}</span></div>`);
   }
   if (data.sp) {
-    const matchText = data.sp.match ? ` — ${data.sp.match}` : '';
+    let matchText = '';
+    if (data.sp.match) {
+      if (data.sp.match.startsWith('TBD')) {
+        matchText = ` — ${data.sp.match}`;
+      } else {
+        const spKO = findMatchKO(data.sp.match);
+        matchText = ` — ${data.sp.match}<span style="color:#586069;font-size:9.5px">${fmtKOLabel(spKO, d)}</span>`;
+      }
+    }
     ctxRows.push(`<div class="ctx-row"><span class="label sp">PREDICTOR</span><span class="value">Round #${data.sp.num} "${data.sp.name}"${matchText}</span></div>`);
   }
   // SuperCoins missions
@@ -2466,6 +2520,41 @@ function buildDayCard(d) {
     const label = dkey(d) === '6-11' ? 'STORE LAUNCH' : 'STORE RESTOCK';
     ctxRows.push(`<div class="ctx-row"><span class="label" style="background:#C62828">${label}</span><span class="value" style="font-size:10px">${items[0] || ''}</span></div>`);
   }
+  // Raffles — draws today, new today, or active
+  const dayKeyRaffle = dkey(d);
+  const rDrawsToday = RAFFLES.filter(r => r.draw.startsWith(dayKeyRaffle));
+  const rNewToday = RAFFLES.filter(r => r.added === dayKeyRaffle);
+  // Active raffles = added on/before today and draw is today or in the future
+  function dateOrdinal(dKey) {
+    const [mm, dd] = dKey.split('-').map(Number);
+    return (mm * 100) + dd;
+  }
+  const todayOrd = dateOrdinal(dayKeyRaffle);
+  const rActive = RAFFLES.filter(r => {
+    if (r.added === 'TBD') return false;
+    if (dateOrdinal(r.added) > todayOrd) return false;
+    if (r.draw.startsWith('TBD')) return true; // TBD draw = still active
+    const drawKey = r.draw.split(' ')[0];
+    return dateOrdinal(drawKey) >= todayOrd;
+  });
+
+  const raffleBits = [];
+  if (rDrawsToday.length > 0) {
+    raffleBits.push(`<span style="color:#C62828;font-weight:700">🏆 DRAW @ 17:00:</span> ${rDrawsToday.map(r => r.prize).join(' + ')}`);
+  }
+  if (rNewToday.length > 0) {
+    raffleBits.push(`<span style="color:#2E7D32;font-weight:700">🆕 NEW:</span> ${rNewToday.map(r => `${r.prize} (${r.cost} SuperCoins, draws ${r.draw.split(' ')[0]})`).join(' · ')}`);
+  }
+  // Show 1-2 active raffles if there's still room
+  if (raffleBits.length === 0 && rActive.length > 0) {
+    const list = rActive.slice(0, 3).map(r => `${r.prize}`).join(' · ');
+    const more = rActive.length > 3 ? ` +${rActive.length - 3} more` : '';
+    raffleBits.push(`Active: ${list}${more}`);
+  }
+  if (raffleBits.length > 0) {
+    ctxRows.push(`<div class="ctx-row"><span class="label" style="background:#C62828">RAFFLE</span><span class="value" style="font-size:10.5px">${raffleBits.join(' · ')}</span></div>`);
+  }
+
   if (ctxRows.length > 0) {
     html += `<div class="day-context">${ctxRows.join('')}</div>`;
   }
@@ -2485,6 +2574,7 @@ function buildDayCard(d) {
         else if (t.includes('Speed')) bg = '#00B0A0';
         else if (t.includes('Boosted')) bg = '#5B9BD5';
         else if (t.includes('Sportsbook mission')) bg = '#2E7D32';
+        else if (t.includes('LP Promo')) bg = '#8B5CF6';
         else if (t.includes('MARQUEE')) bg = '#FFD700';
         else if (t.includes('⚠️')) bg = '#C62828';
         const color = (t.includes('MARQUEE')) ? '#5D4037' : '#fff';
