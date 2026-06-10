@@ -496,9 +496,164 @@ body {
   }
   .page-header h1 { font-size: 14px; }
 }
+
+/* ────── NAV CALENDAR SIDEBAR ────── */
+.cal-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 95;
+  padding: 18px 16px;
+  box-shadow: 1px 0 3px rgba(0,0,0,0.04);
+}
+
+.main-wrapper { margin-left: 280px; }
+
+.cal-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.cal-brand .cal-emoji { font-size: 18px; }
+.cal-brand .cal-title { font-size: 15px; font-weight: 800; color: var(--text); letter-spacing: -0.2px; }
+.cal-subtitle {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+.cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-bottom: 16px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+.cal-legend-item { display: flex; align-items: center; gap: 4px; }
+.cal-legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+.cal-month-name {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0D6EFD;
+  letter-spacing: 1.2px;
+  margin: 14px 0 8px 0;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+.cal-dow {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2px 0 4px 0;
+  letter-spacing: 0.3px;
+}
+.cal-day {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #F0F3F6;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text);
+  transition: all 0.12s;
+  padding-top: 2px;
+}
+.cal-day:hover {
+  background: #E1E6EB;
+  transform: translateY(-1px);
+}
+.cal-day.outside {
+  color: #C9D1D9;
+  background: transparent;
+  cursor: default;
+}
+.cal-day.outside:hover { background: transparent; transform: none; }
+.cal-day.today {
+  border: 2px solid #F0A500;
+  background: #FFF8E1;
+  font-weight: 800;
+}
+.cal-day .cal-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 3px;
+  display: inline-block;
+}
+.cal-day .cal-dash {
+  display: inline-block;
+  width: 6px;
+  height: 1.5px;
+  background: #C9D1D9;
+  margin-top: 5px;
+  border-radius: 1px;
+}
+
+.cal-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 110;
+  background: var(--header-bg);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 11px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.cal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 94;
+}
+.cal-overlay.show { display: block; }
+
+@media (max-width: 900px) {
+  .cal-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.22s;
+  }
+  .cal-sidebar.open { transform: translateX(0); }
+  .main-wrapper { margin-left: 0; }
+  .cal-toggle { display: block; }
+  .page-header { padding-left: 56px; }
+}
 </style>
 </head>
 <body>
+
+<button class="cal-toggle" id="calToggle" aria-label="Toggle navigation calendar">☰ Cal</button>
+<div class="cal-overlay" id="calOverlay"></div>
+<aside class="cal-sidebar" id="calSidebar"></aside>
+
+<div class="main-wrapper">
 
 <div class="page-header">
   <div>
@@ -2252,6 +2407,7 @@ function buildDayCard(d) {
   const today = (d.getFullYear() === TODAY.getFullYear() && d.getMonth() === TODAY.getMonth() && d.getDate() === TODAY.getDate());
   const card = document.createElement('div');
   card.className = 'day-card';
+  card.id = 'day-' + dkey(d);
   if (today) card.classList.add('today');
   if (data.marquee) card.classList.add('marquee');
   card.dataset.phase = data.phase.key;
@@ -2488,6 +2644,123 @@ function build() {
 
 build();
 
+// ────── NAV CALENDAR SIDEBAR ──────
+function phaseColor(phaseKey) {
+  return ({
+    pre: '#C9D1D9',
+    group: 'var(--phase-group)',
+    r32: 'var(--phase-r32)',
+    r16: 'var(--phase-r16)',
+    qf: 'var(--phase-qf)',
+    sf: 'var(--phase-sf)',
+    gap: '#212529',
+    final: 'var(--phase-final)',
+    post: '#C9D1D9'
+  })[phaseKey] || '#C9D1D9';
+}
+
+function buildSidebarCalendar() {
+  const sidebar = document.getElementById('calSidebar');
+  if (!sidebar) return;
+  const months = [
+    { name: 'JUNE 2026', year: 2026, monthIdx: 5 },
+    { name: 'JULY 2026', year: 2026, monthIdx: 6 }
+  ];
+  let html = '';
+  html += '<div class="cal-brand"><span class="cal-emoji">⚽</span><span class="cal-title">WC 2026 Coordinator</span></div>';
+  html += '<div class="cal-subtitle">Greece Homepage · Daily Ops</div>';
+  html += '<div class="cal-legend">';
+  const legend = [
+    ['GROUPS', 'var(--phase-group)'],
+    ['R32', 'var(--phase-r32)'],
+    ['R16', 'var(--phase-r16)'],
+    ['QF', 'var(--phase-qf)'],
+    ['SF', 'var(--phase-sf)'],
+    ['FINAL', 'var(--phase-final)'],
+    ['REST', '#212529']
+  ];
+  legend.forEach(([label, c]) => {
+    html += `<div class="cal-legend-item"><span class="cal-legend-dot" style="background:${c}"></span>${label}</div>`;
+  });
+  html += '</div>';
+
+  months.forEach(m => {
+    html += `<div class="cal-month-name">${m.name}</div>`;
+    html += '<div class="cal-grid">';
+    ['M','T','W','T','F','S','S'].forEach(dow => {
+      html += `<div class="cal-dow">${dow}</div>`;
+    });
+    const firstDay = new Date(m.year, m.monthIdx, 1);
+    const startWeekday = (firstDay.getDay() + 6) % 7; // Mon-start = 0
+    const daysInMonth = new Date(m.year, m.monthIdx + 1, 0).getDate();
+    for (let i = 0; i < startWeekday; i++) {
+      html += '<div class="cal-day outside"></div>';
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dt = new Date(m.year, m.monthIdx, day);
+      const phase = phaseOf(dt);
+      const isToday = dt.toDateString() === TODAY.toDateString();
+      const key = (m.monthIdx + 1) + '-' + day;
+      const inWC = phase.key !== 'pre' && phase.key !== 'post';
+      const noMatch = NO_MATCH_DAYS.has(key);
+      let cls = 'cal-day';
+      if (!inWC) cls += ' outside';
+      if (isToday) cls += ' today';
+      const color = noMatch ? '#212529' : phaseColor(phase.key);
+      let marker = '';
+      if (!inWC) marker = '<span class="cal-dash"></span>';
+      else if (noMatch) marker = '<span class="cal-dash"></span>';
+      else marker = `<span class="cal-dot" style="background:${color}"></span>`;
+      const attrs = inWC ? `data-day="${key}" role="button" tabindex="0" title="${phase.label}"` : '';
+      html += `<div class="${cls}" ${attrs}><span>${day}</span>${marker}</div>`;
+    }
+    html += '</div>';
+  });
+
+  sidebar.innerHTML = html;
+
+  // Click handlers
+  sidebar.querySelectorAll('.cal-day[data-day]').forEach(el => {
+    const navigate = () => {
+      const target = document.getElementById('day-' + el.dataset.day);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Highlight briefly
+        target.style.transition = 'box-shadow 0.3s';
+        const old = target.style.boxShadow;
+        target.style.boxShadow = '0 0 0 3px #F0A500';
+        setTimeout(() => target.style.boxShadow = old, 1200);
+      }
+      // Close mobile drawer
+      sidebar.classList.remove('open');
+      document.getElementById('calOverlay').classList.remove('show');
+    };
+    el.addEventListener('click', navigate);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(); }
+    });
+  });
+}
+
+buildSidebarCalendar();
+
+// Mobile toggle
+const calToggle = document.getElementById('calToggle');
+const calOverlay = document.getElementById('calOverlay');
+const calSidebar = document.getElementById('calSidebar');
+if (calToggle) {
+  calToggle.addEventListener('click', () => {
+    calSidebar.classList.toggle('open');
+    calOverlay.classList.toggle('show');
+  });
+}
+if (calOverlay) {
+  calOverlay.addEventListener('click', () => {
+    calSidebar.classList.remove('open');
+    calOverlay.classList.remove('show');
+  });
+}
+
 document.querySelectorAll('.phase-filter').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.phase-filter').forEach(b => b.classList.remove('active'));
@@ -2522,5 +2795,6 @@ window.addEventListener('load', () => {
 });
 </script>
 
+</div>
 </body>
 </html>
