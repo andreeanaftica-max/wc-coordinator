@@ -684,7 +684,7 @@ body {
         <ul>
           <li><strong>Slot 1</strong> — Super Friday banner (always-on, redirects to LP with 6+ cards & horizontal promo)</li>
           <li><strong>Slot 2</strong> — 1up + Boosted Odds (day-before rule: banner shows match playing TOMORROW) → <code>/1up-lp</code></li>
-          <li><strong>Slot 3</strong> — ⭐ <strong>Triliza tonight</strong> (today's Triliza match) → <code>/triliza-lp</code> — combines Triliza + SB Unique mission + Speed Battles when on same match</li>
+          <li><strong>Slot 3</strong> — ⭐ <strong>Triliza tonight</strong> (today's Triliza match) → <code>/triliza-lp</code> — combines Triliza + Sportsbook mission + Speed Battles when on same match</li>
           <li><strong>Slot 4</strong> — ⭐ <strong>Daily Live Betting Mission</strong> → <code>/supercoins/shop/earn-more</code> — active during match session window (first match KO → last match end)</li>
           <li><strong>Slot 5</strong> — Raffle banner (when raffle open)</li>
           <li><strong>Slot 6+</strong> — Priority cascade: Store launch / Raffle Draw Today / Acca Insurance / In-Play Boost / Welcome</li>
@@ -692,9 +692,9 @@ body {
         </ul>
         <h4>Quicklink row (second, max 6 visible)</h4>
         <p>Default order: <code>🏆 Super Triliza → WC Calendar → SuperPredictor → Pick of the Day → Sports Leaderboards (or Speed Battles) → Bonuses & Promos</code></p>
-        <p style="font-size:11px">Triliza is HERO F2P → always slot 1, except SP-round-start days where SP-NEW takes slot 1 and Triliza slides to slot 2.</p>
+        <p style="font-size:11px">Triliza is HERO F2P → always slot 1, except SuperPredictor round-start days where SuperPredictor NEW takes slot 1 and Triliza slides to slot 2.</p>
         <ul>
-          <li><strong>SP round-start day</strong> (Jun 11, 18, 24, 29 · Jul 8, 14, 18): SuperPredictor → slot 1 (NEW ROUND)</li>
+          <li><strong>SuperPredictor round-start day</strong> (Jun 11, 18, 24, 29 · Jul 8, 14, 18): SuperPredictor → slot 1 (NEW ROUND)</li>
           <li><strong>Phase-start day</strong> (Jun 11, 29 · Jul 8, 14, 18 — subset of above): also Raffle Winners → slot 6 (just closed), Sports Leaderboard tagged NEW PHASE</li>
           <li><strong>Speed Battles day</strong> (Jun 17/20/22/26 only): Speed Battles → slot 5/6 (drop Bonuses & Promos)</li>
           <li><strong>24h before raffle close</strong>: Raffle Winners drops out</li>
@@ -726,7 +726,7 @@ body {
           <tr><td style="padding:3px 6px"><strong>Super Friday banner</strong></td><td>Template, always-on</td><td>Adapt copy/art each <strong>phase</strong> (Group → R32 → R16 → QF → SF → Final)</td></tr>
           <tr><td style="padding:3px 6px"><strong>1up + Boosted Odds banner</strong></td><td>Template, daily</td><td>Adapt each time the <strong>1up match</strong> changes (every day)</td></tr>
           <tr><td style="padding:3px 6px">Pure Boosted Odds banner (no-1up days)</td><td>Template</td><td>Adapt each time the <strong>featured fixture</strong> changes (Jun 28, Jul 16, Jul 17)</td></tr>
-          <tr><td style="padding:3px 6px"><strong>⭐ Triliza tonight banner</strong> (combines Triliza + SB Mission + Speed Battles when same match)</td><td>Template, daily HERO</td><td>Adapt each time the <strong>Triliza match + round #</strong> changes (every day)</td></tr>
+          <tr><td style="padding:3px 6px"><strong>⭐ Triliza tonight banner</strong> (combines Triliza + Sportsbook mission + Speed Battles when same match)</td><td>Template, daily HERO</td><td>Adapt each time the <strong>Triliza match + round #</strong> changes (every day)</td></tr>
           <tr><td style="padding:3px 6px"><strong>Daily Live Betting Mission banner</strong> → <code>/supercoins/shop/earn-more</code></td><td>Template, daily HERO</td><td>Active only during match session (first match KO → last match end, e.g. Jun 11: 22:00 → 07:00 next day). Adapt window times daily per fixture schedule</td></tr>
           <tr><td style="padding:3px 6px">Raffle banner — "OPEN" (default)</td><td>Template, phase-long</td><td>Adapt each time a <strong>new raffle phase</strong> opens (5 raffle phases)</td></tr>
           <tr><td style="padding:3px 6px">Raffle banner — "DISCOVERY" (non-draw days, list active prizes + buy-ins)</td><td>Template, daily</td><td>Adapt each day with active raffle prizes + direct-buy-in opportunity; rotates with shop inventory</td></tr>
@@ -757,7 +757,7 @@ body {
         <table style="width:100%;font-size:10.5px;border-collapse:collapse">
           <tr style="background:#F0F3F6"><th style="text-align:left;padding:4px 6px;width:38%">Creative</th><th style="text-align:left;padding:4px 6px;width:20%">Type</th><th style="text-align:left;padding:4px 6px">Adapt trigger</th></tr>
           <tr><td style="padding:3px 6px"><strong>🏆 Super Triliza</strong> quicklink</td><td>Template, daily</td><td>Adapt match short name + round # daily (39 rounds Group Stage; KO TBD)</td></tr>
-          <tr><td style="padding:3px 6px">World Cup Calendar quicklink (incl. SC Drop BUNDLE state)</td><td>Template, 2 states</td><td>Default state always-on; <strong>BUNDLE state</strong> on Jun 11, 12, 13, 17, 22 — gift icon + "+400 SC inside" copy</td></tr>
+          <tr><td style="padding:3px 6px">World Cup Calendar quicklink (incl. SuperCoins Drop BUNDLE state)</td><td>Template, 2 states</td><td>Default state always-on; <strong>BUNDLE state</strong> on Jun 11, 12, 13, 17, 22 — gift icon + "+400 SuperCoins inside" copy</td></tr>
           <tr><td style="padding:3px 6px">SuperPredictor quicklink</td><td>Template, 7 rounds</td><td>Adapt round name + match each <strong>round-start day</strong> (Jun 11, 18, 24, 29, Jul 8, 14, 18)</td></tr>
           <tr><td style="padding:3px 6px">Pick of the Day quicklink</td><td>Template, daily</td><td>Adapt curated SuperSocial ticket name daily (Anastasis)</td></tr>
           <tr><td style="padding:3px 6px">SuperSocial Sports Leaderboards quicklink</td><td>Template, 8 leaderboards</td><td>Adapt name + NEW PHASE tag at phase-start days (5 phase starts)</td></tr>
@@ -793,16 +793,16 @@ body {
         <h4 style="margin-top:14px">📣 COMMS CREATIVES (NL · push · Viber · SMS · inbox)</h4>
         <table style="width:100%;font-size:10.5px;border-collapse:collapse">
           <tr style="background:#F0F3F6"><th style="text-align:left;padding:4px 6px;width:38%">Comm</th><th style="text-align:left;padding:4px 6px;width:20%">Type</th><th style="text-align:left;padding:4px 6px">Adapt trigger</th></tr>
-          <tr><td style="padding:3px 6px">Morning Hero Newsletter (09:00)</td><td>Template, daily</td><td>Combines that day's events — adapt parts list daily (SP open, raffle, store, Triliza fixture, bundle, etc.)</td></tr>
-          <tr><td style="padding:3px 6px">Daily Missions Refresh push (11:00)</td><td>Template, daily</td><td>Adapt SB Unique match + CA Unique slot daily (segmented: inside-only)</td></tr>
+          <tr><td style="padding:3px 6px">Morning Hero Newsletter (09:00)</td><td>Template, daily</td><td>Combines that day's events — adapt parts list daily (SuperPredictor open, raffle, store, Triliza fixture, bundle, etc.)</td></tr>
+          <tr><td style="padding:3px 6px">Daily Missions Refresh push (11:00)</td><td>Template, daily</td><td>Adapt Sportsbook mission match + Casino slot mission daily (segmented: inside-only)</td></tr>
           <tr><td style="padding:3px 6px">Marquee match push (KO −3h)</td><td>Template, ~5 days</td><td>Adapt match — Jun 11 / 13 / 21 / 25 / Jul 19</td></tr>
-          <tr><td style="padding:3px 6px"><strong>Triliza pre-match push</strong> (KO −3h on Triliza fixture)</td><td>Template, daily</td><td>Adapt match + KO time daily — combines Triliza + SB Unique mission (2-in-1)</td></tr>
+          <tr><td style="padding:3px 6px"><strong>Triliza pre-match push</strong> (KO −3h on Triliza fixture)</td><td>Template, daily</td><td>Adapt match + KO time daily — combines Triliza + Sportsbook mission (2-in-1)</td></tr>
           <tr><td style="padding:3px 6px">Speed Battles HT −15min push</td><td>Template, 4 uses</td><td>Adapt match name (Jun 17, 20, 22, 26)</td></tr>
           <tr><td style="padding:3px 6px">Raffle pre-draw hype push (16:45)</td><td>Template, ~10 draws</td><td>Adapt prize name (entrants segment)</td></tr>
           <tr><td style="padding:3px 6px">Raffle winners push (17:30, wiki-gated)</td><td>Template, ~10 draws</td><td>Adapt winner name(s) — gated by Ilias/Ionut wiki update at 17:15</td></tr>
           <tr><td style="padding:3px 6px">Raffle closing 24h reminder push</td><td>Template, 5 uses</td><td>Adapt prize per phase end</td></tr>
-          <tr><td style="padding:3px 6px">Phase-start hero NL</td><td>Template, 5 uses</td><td>Adapt phase name + new SP round + new raffle + last winners</td></tr>
-          <tr><td style="padding:3px 6px">MD-start push (Group Stage internal)</td><td>Template, 2 uses</td><td>Adapt new SP round match (Jun 18, 24)</td></tr>
+          <tr><td style="padding:3px 6px">Phase-start hero NL</td><td>Template, 5 uses</td><td>Adapt phase name + new SuperPredictor round + new raffle + last winners</td></tr>
+          <tr><td style="padding:3px 6px">MD-start push (Group Stage internal)</td><td>Template, 2 uses</td><td>Adapt new SuperPredictor round match (Jun 18, 24)</td></tr>
           <tr><td style="padding:3px 6px">EOD Sunday recap NL</td><td>Template, 2 uses</td><td>Adapt weekly winners + leaderboard standings (Jun 14, 21)</td></tr>
           <tr><td style="padding:3px 6px">Group Stage wrap NL (Jun 28)</td><td>One-off</td><td>Hero recap — 30K Triliza result + KO bracket reveal</td></tr>
           <tr><td style="padding:3px 6px">"Final tomorrow" hype (Jul 17)</td><td>One-off</td><td>Final-specific</td></tr>
@@ -820,12 +820,12 @@ body {
           <li><strong>✅ 1up day-before rule applied</strong> — 1up offer goes live the day BEFORE its match plays. When the match kicks off, 1up swaps to the next offer. Jun 11 = 1up for Korea-Czechia (plays Jun 12), Jun 12 = 1up for USA-Paraguay (plays Jun 13), etc. Last Group Stage 1up = Jun 27 for Algeria-Austria (plays Jun 28). Knockout 1up swaps cascade: Jul 13=SF1 → Jul 14=SF2 → Jul 15-17=3rd Place → Jul 18=Final.</li>
           <li><strong>Match KO times</strong> — pulled from WC fixture sheet (Greek local time). Mexico vs SA opens Jun 11 22:00. Korea vs Czechia plays Jun 12 05:00 etc.</li>
           <li><strong>1up match dates vs sheet fixture dates</strong> — Sheet places some user 1up matches outside Group Stage (e.g. Norway-France Jul 1, Egypt-Iran Jun 27 morning). Day-before rule maps them per user's Group Stage assumption.</li>
-          <li><strong>KO 1up matches, Triliza fixtures, SP rounds 4–7 matches, KO missions</strong> — decided on planning days Jun 28 / Jul 3 / Jul 7 / Jul 13 / Jul 17</li>
+          <li><strong>KO 1up matches, Triliza fixtures, SuperPredictor rounds 4–7 matches, KO missions</strong> — decided on planning days Jun 28 / Jul 3 / Jul 7 / Jul 13 / Jul 17</li>
           <li><strong>Sports Leaderboard prize pools + names</strong> — 8 leaderboards, only mechanism in sheet</li>
           <li><strong>Casino Tournament dates</strong> — 8 weekly, no schedule in sheet</li>
           <li><strong>Raffles #9–12 draw dates</strong> — France, Portugal, Spain, Cafu Grand Finale TBD</li>
           <li><strong>Lego Trophy price</strong> — copy says 18K, column says 15K</li>
-          <li><strong>14 Jun CA Unique Greek copy</strong> — references "Legacy of Dead" instead of "40 Super Hot"</li>
+          <li><strong>14 Jun Casino slot mission Greek copy</strong> — references "Legacy of Dead" instead of "40 Super Hot"</li>
           <li><strong>SuperCoins Calendar tournament-ID switch</strong> at 10:00 on Jun 28 (last Group Stage day)</li>
         </ul>
       </div>
@@ -850,7 +850,7 @@ body {
         <ul style="font-size:11px">
           <li><strong>Speed Battles day (Jun 17/20/22/26)</strong> → split SuperSocial card into 2: "Sports" + "Casino — Speed Battles ⭐"</li>
           <li><strong>Store launch / restock (Jun 11 / Jun 25)</strong> → add <code>/supercoins/shop</code> card (with Cafu signed jersey hero on Jun 11)</li>
-          <li><strong>SC Drop bundle day (Jun 11/12/13/17/22)</strong> → <em>no separate card</em> — the WC Calendar card itself shows "🎁 BONUS 400 SC INSIDE" hero treatment</li>
+          <li><strong>SuperCoins Drop bundle day (Jun 11/12/13/17/22)</strong> → <em>no separate card</em> — the WC Calendar card itself shows "🎁 BONUS 400 SuperCoins INSIDE" hero treatment</li>
         </ul>
         <h4>Horizontal promo (single strip below cards)</h4>
         <p style="font-size:11px">Rotating daily — pulled from CRM Sports onsite offers (Ilias/Giorgos). Examples already populated per day in the day cards' Marketing setup block.</p>
@@ -860,19 +860,19 @@ body {
 
   <div class="panel">
     <details>
-      <summary>🔢 Round numbering (SP + Triliza, with matches)</summary>
+      <summary>🔢 Round numbering (SuperPredictor + Triliza, with matches)</summary>
       <div class="panel-content">
         <h4>SuperPredictor — 7 rounds, named matches</h4>
         <ul>
-          <li><strong>SP #1 "Group MD1 Predictor"</strong> · Jun 11→17 · <em>Mexico vs South Africa</em></li>
-          <li><strong>SP #2 "Group MD2 Predictor"</strong> · Jun 18→23 · <em>Netherlands vs Sweden</em></li>
-          <li><strong>SP #3 "Group MD3 Predictor"</strong> · Jun 24→28 · <em>Uruguay vs Spain</em></li>
-          <li><strong>SP #4 "R32 Predictor"</strong> · Jun 29→Jul 7 · TBD</li>
-          <li><strong>SP #5 "R16/QF Predictor"</strong> · Jul 8→13 · TBD</li>
-          <li><strong>SP #6 "SF Predictor"</strong> · Jul 14→17 · TBD</li>
-          <li><strong>SP #7 "Final Predictor"</strong> · Jul 18→19 · TBD</li>
+          <li><strong>SuperPredictor #1 "Group MD1 Predictor"</strong> · Jun 11→17 · <em>Mexico vs South Africa</em></li>
+          <li><strong>SuperPredictor #2 "Group MD2 Predictor"</strong> · Jun 18→23 · <em>Netherlands vs Sweden</em></li>
+          <li><strong>SuperPredictor #3 "Group MD3 Predictor"</strong> · Jun 24→28 · <em>Uruguay vs Spain</em></li>
+          <li><strong>SuperPredictor #4 "R32 Predictor"</strong> · Jun 29→Jul 7 · TBD</li>
+          <li><strong>SuperPredictor #5 "R16/QF Predictor"</strong> · Jul 8→13 · TBD</li>
+          <li><strong>SuperPredictor #6 "SF Predictor"</strong> · Jul 14→17 · TBD</li>
+          <li><strong>SuperPredictor #7 "Final Predictor"</strong> · Jul 18→19 · TBD</li>
         </ul>
-        <p style="font-size:11px;color:var(--text-light)">SP round-open days: Jun 11, 18, 24, 29 · Jul 8, 14, 18</p>
+        <p style="font-size:11px;color:var(--text-light)">SuperPredictor round-open days: Jun 11, 18, 24, 29 · Jul 8, 14, 18</p>
         <h4>Super Triliza — daily, #1 → #17 in Group Stage (30K jackpot per round)</h4>
         <p style="font-size:11px">Jun 11 = #1 (Mexico vs SA) … Jun 27 = #17 (Croatia vs Ghana 00:00). KO rounds TBD on planning days. Different fixture each day (NOT the 1up match).</p>
       </div>
@@ -919,18 +919,18 @@ body {
       <div class="panel-content">
         <table style="width:100%;font-size:11px;border-collapse:collapse">
           <tr style="background:#F0F3F6"><th style="text-align:left;padding:4px 6px">#</th><th style="text-align:left;padding:4px 6px">Prize</th><th style="text-align:left;padding:4px 6px">Entry</th><th style="text-align:left;padding:4px 6px">Draws</th></tr>
-          <tr><td style="padding:3px 6px">1</td><td>Mexico Jersey</td><td>50 SC</td><td>Jun 11 17:00</td></tr>
-          <tr><td style="padding:3px 6px">2</td><td>Brazil Cafu Jersey</td><td>150 SC</td><td>Jun 15 17:00</td></tr>
-          <tr><td style="padding:3px 6px">3</td><td>Lego WC Trophy</td><td>100 SC</td><td>Jun 15 17:00</td></tr>
-          <tr><td style="padding:3px 6px">4</td><td>England Jersey</td><td>50 SC</td><td>Jun 17 17:00</td></tr>
-          <tr><td style="padding:3px 6px">5</td><td>Croatia Jersey</td><td>50 SC</td><td>Jun 17 17:00</td></tr>
-          <tr><td style="padding:3px 6px">6</td><td>Germany Jersey</td><td>50 SC</td><td>Jun 20 17:00</td></tr>
-          <tr><td style="padding:3px 6px">7</td><td>Argentina Jersey</td><td>50 SC</td><td>Jun 22 17:00</td></tr>
-          <tr><td style="padding:3px 6px">8</td><td>Brazil Cafu Jersey (2nd)</td><td>150 SC</td><td>Jun 25 17:00</td></tr>
-          <tr><td style="padding:3px 6px">9</td><td>France Jersey</td><td>50 SC</td><td><span class="tbd-inline">TBD</span></td></tr>
-          <tr><td style="padding:3px 6px">10</td><td>Portugal Jersey</td><td>50 SC</td><td><span class="tbd-inline">TBD</span></td></tr>
-          <tr><td style="padding:3px 6px">11</td><td>Spain Jersey</td><td>50 SC</td><td><span class="tbd-inline">TBD</span></td></tr>
-          <tr><td style="padding:3px 6px">12</td><td>Cafu Grand Finale</td><td>250 SC</td><td><span class="tbd-inline">TBD</span></td></tr>
+          <tr><td style="padding:3px 6px">1</td><td>Mexico Jersey</td><td>50 SuperCoins</td><td>Jun 11 17:00</td></tr>
+          <tr><td style="padding:3px 6px">2</td><td>Brazil Cafu Jersey</td><td>150 SuperCoins</td><td>Jun 15 17:00</td></tr>
+          <tr><td style="padding:3px 6px">3</td><td>Lego WC Trophy</td><td>100 SuperCoins</td><td>Jun 15 17:00</td></tr>
+          <tr><td style="padding:3px 6px">4</td><td>England Jersey</td><td>50 SuperCoins</td><td>Jun 17 17:00</td></tr>
+          <tr><td style="padding:3px 6px">5</td><td>Croatia Jersey</td><td>50 SuperCoins</td><td>Jun 17 17:00</td></tr>
+          <tr><td style="padding:3px 6px">6</td><td>Germany Jersey</td><td>50 SuperCoins</td><td>Jun 20 17:00</td></tr>
+          <tr><td style="padding:3px 6px">7</td><td>Argentina Jersey</td><td>50 SuperCoins</td><td>Jun 22 17:00</td></tr>
+          <tr><td style="padding:3px 6px">8</td><td>Brazil Cafu Jersey (2nd)</td><td>150 SuperCoins</td><td>Jun 25 17:00</td></tr>
+          <tr><td style="padding:3px 6px">9</td><td>France Jersey</td><td>50 SuperCoins</td><td><span class="tbd-inline">TBD</span></td></tr>
+          <tr><td style="padding:3px 6px">10</td><td>Portugal Jersey</td><td>50 SuperCoins</td><td><span class="tbd-inline">TBD</span></td></tr>
+          <tr><td style="padding:3px 6px">11</td><td>Spain Jersey</td><td>50 SuperCoins</td><td><span class="tbd-inline">TBD</span></td></tr>
+          <tr><td style="padding:3px 6px">12</td><td>Cafu Grand Finale</td><td>250 SuperCoins</td><td><span class="tbd-inline">TBD</span></td></tr>
         </table>
       </div>
     </details>
@@ -942,14 +942,14 @@ body {
       <div class="panel-content">
         <h4>Jun 11 — Store launch (13 items)</h4>
         <ul>
-          <li><strong>Brazil Cafu signed jersey</strong> × 1 — 26,000 SC</li>
-          <li>Lego WC Trophy × 1 — 15,000 SC <span class="tbd-inline">(copy says 18,000 — flag)</span></li>
-          <li>11 jerseys × 2 each, 12,000 SC: England, Croatia, Germany, Argentina, France, Portugal, Mexico, Spain, Uruguay, Netherlands, Brazil (unsigned)</li>
+          <li><strong>Brazil Cafu signed jersey</strong> × 1 — 26,000 SuperCoins</li>
+          <li>Lego WC Trophy × 1 — 15,000 SuperCoins <span class="tbd-inline">(copy says 18,000 — flag)</span></li>
+          <li>11 jerseys × 2 each, 12,000 SuperCoins: England, Croatia, Germany, Argentina, France, Portugal, Mexico, Spain, Uruguay, Netherlands, Brazil (unsigned)</li>
         </ul>
         <h4>Jun 25 — Restock (12 items, no Cafu)</h4>
         <ul>
-          <li>Lego Trophy × 2 — 15,000 SC</li>
-          <li>11 jerseys × 2 each — 12,000 SC</li>
+          <li>Lego Trophy × 2 — 15,000 SuperCoins</li>
+          <li>11 jerseys × 2 each — 12,000 SuperCoins</li>
         </ul>
       </div>
     </details>
@@ -1040,7 +1040,7 @@ const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 // ─────────────────────────────────────────────────────────
 
 // Super Triliza daily fixtures — Group Stage Jun 11 → Jun 27
-// Same matches drive SuperCoins SB Unique missions
+// Same matches drive SuperCoins Sportsbook missions
 const TRILIZA = {
   '6-11': { match: 'Mexico vs South Africa', time: '22:00' },
   '6-12': { match: 'Canada vs Bosnia and Herzegovina', time: '22:00' },
@@ -1062,7 +1062,7 @@ const TRILIZA = {
   '6-28': { match: 'TBD (final group day — set Jun 28)', time: 'TBD' }
 };
 
-// SuperCoins CA Unique missions (daily slot — wager 20€ → 300 coins)
+// SuperCoins Casino slot mission missions (daily slot — wager 20€ → 300 coins)
 const CA_UNIQUE = {
   '6-11': 'Gates of Olympus Super Scatter (Pragmatic Play)',
   '6-12': 'Legacy of Dead (Play\'N Go)',
@@ -1175,13 +1175,13 @@ const CASINO_TOURNAMENTS = [
 // Direct buy-in items by drop date (jersey store)
 const BUYIN_ITEMS = {
   '6-11': [
-    'Brazil Jersey signed by Cafu × 1 — 26,000 SC',
-    'Lego WC Trophy × 1 — 15,000 SC',
-    '11 jerseys (Eng, Cro, Ger, Arg, Fra, Por, Mex, Esp, Uru, Ned, Bra) × 2 each — 12,000 SC each'
+    'Brazil Jersey signed by Cafu × 1 — 26,000 SuperCoins',
+    'Lego WC Trophy × 1 — 15,000 SuperCoins',
+    '11 jerseys (Eng, Cro, Ger, Arg, Fra, Por, Mex, Esp, Uru, Ned, Bra) × 2 each — 12,000 SuperCoins each'
   ],
   '6-25': [
-    'Restock: Lego Trophy × 2 — 15,000 SC',
-    'Restock: 11 jerseys × 2 each — 12,000 SC (no Cafu restock)'
+    'Restock: Lego Trophy × 2 — 15,000 SuperCoins',
+    'Restock: 11 jerseys × 2 each — 12,000 SuperCoins (no Cafu restock)'
   ]
 };
 
@@ -1379,11 +1379,11 @@ function MATCHES_TODAY_FN(d) {
     // Triliza match
     if (trilizaFx && trilizaFx.match === fx.match && trilizaFx.time === fx.time) {
       tags.push(`Triliza #${trilizaRound(d)}`);
-      tags.push('SB Unique');
+      tags.push('Sportsbook mission');
     }
     // SP match
     if (sp && sp.match && fx.match === sp.match) {
-      tags.push(`SP MD${sp.num <= 3 ? sp.num : ''}`);
+      tags.push(`SuperPredictor MD${sp.num <= 3 ? sp.num : ''}`);
     }
     // Speed Battles
     if (sbm) {
@@ -1423,18 +1423,18 @@ function superFridayLP(d) {
   cards.push({ title: 'SuperPredictor', desc: sp && sp.match && !sp.match.startsWith('TBD') ? `Round #${sp.num} — predict ${sp.match}` : `Round #${sp ? sp.num : '?'}`, redirect: '/predictor-lp' });
   cards.push({ title: 'Super Boosts', desc: 'Pre-match boosted odds across top events', redirect: '/boosted-odds' });
   const calBundleDesc = COIN_DROP_DAYS.has(k)
-    ? '🎁 BONUS 400 SC INSIDE today — unlock daily reward + SC Drop bundle (1,000 SC possible)'
+    ? '🎁 BONUS 400 SuperCoins INSIDE today — unlock daily reward + SuperCoins Drop bundle (1,000 SuperCoins possible)'
     : 'Unlock daily SuperCoins reward — claim & spend in Shop';
   cards.push({ title: 'World Cup Calendar', desc: calBundleDesc, redirect: '/supercoins/calendar', hero: COIN_DROP_DAYS.has(k) });
   // 6th: SuperSocial — split into 2 cards on Speed Battles days
   if (SPEED_BATTLES[k]) {
     cards.push({ title: 'SuperSocial Sports', desc: 'Sports Leaderboards — accumulate winnings, climb ranks', redirect: '/supersocial/sports' });
-    cards.push({ title: 'SuperSocial Casino — Speed Battles', desc: `Speed Battles tonight @ ${SPEED_BATTLES[k]} — 15min battles, fast SC payouts`, redirect: '/supersocial/speed-battles', hero: true });
+    cards.push({ title: 'SuperSocial Casino — Speed Battles', desc: `Speed Battles tonight @ ${SPEED_BATTLES[k]} — 15min battles, fast SuperCoins payouts`, redirect: '/supersocial/speed-battles', hero: true });
   } else {
     cards.push({ title: 'SuperSocial Challenges', desc: 'Sports Leaderboards + Casino tournaments', redirect: '/supersocial' });
   }
   // Conditional extra card (up to 8 cards total)
-  // Note: SC Drop bundle is folded INTO the Calendar card (above), so no separate card needed
+  // Note: SuperCoins Drop bundle is folded INTO the Calendar card (above), so no separate card needed
   if (DIRECT_BUYIN_DROPS.has(k)) {
     cards.push({ title: k === '6-11' ? 'STORE LAUNCH' : 'STORE RESTOCK', desc: k === '6-11' ? 'Cafu signed Brazil jersey + Lego + 11 WC jerseys' : '11 jerseys + Lego restocked', redirect: '/supercoins/shop', hero: k === '6-11' });
   }
@@ -1739,7 +1739,7 @@ function scheduledActions(d) {
       sortTime: 540,
       icon: '🎟️',
       action: '<strong>Raffle banner creative</strong>: list active raffles + direct buy-in items available',
-      detail: 'Non-draw days: shift from urgency to discovery — what\'s in the SC Shop right now',
+      detail: 'Non-draw days: shift from urgency to discovery — what\'s in the SuperCoins Shop right now',
       owner: 'Anastasis / Marketing'
     });
   }
@@ -1894,7 +1894,7 @@ function dayData(d) {
       data.quicklinks = [{ text: 'Pre-WC quicklink stack (existing)' }];
       data.comms = [
         { time: '09:00', text: '<strong>"Tomorrow it kicks off — every day is a Super Friday"</strong>', channels: 'newsletter + push', landing: '/super-friday-lp' },
-        { time: '20:00', text: 'Schedule SP Round #1 push for 00:00 Jun 11', channels: 'scheduled push + Viber', landing: '/predictor-lp' },
+        { time: '20:00', text: 'Schedule SuperPredictor Round #1 push for 00:00 Jun 11', channels: 'scheduled push + Viber', landing: '/predictor-lp' },
         { time: 'EOD', text: '"Just hours away — Mexico vs SA at 22:00 tomorrow opens the World Cup"', channels: 'push + Viber', landing: '/super-friday-lp' }
       ];
       data.setup.anastasis = [
@@ -1936,12 +1936,12 @@ function dayData(d) {
     data.banners.push({ text: 'Pure Boosted Odds — marquee fixture (Anastasis pick)', redirect: '/boosted-odds', usage: 'timed', deadline: 'until match KO' });
   }
 
-  // NEW: Triliza-tonight banner (HERO F2P) — combines Triliza + SB Unique mission + Speed Battles when on same match
+  // NEW: Triliza-tonight banner (HERO F2P) — combines Triliza + Sportsbook mission + Speed Battles when on same match
   const tonightFx = TRILIZA[dkey(d)];
   if (tonightFx && !tonightFx.match.startsWith('TBD')) {
     const parts = [`Tonight @ ${tonightFx.time}: <strong>${tonightFx.match}</strong>`];
     parts.push(`Triliza Round #${triliza} (30K jackpot)`);
-    parts.push('Mission +300 SC');
+    parts.push('Mission +300 SuperCoins');
     const sbm = speedBattleMatch(d);
     if (sbm && sbm.startsWith(tonightFx.match.split(' vs ')[0])) {
       parts.push('Speed Battles @ HT');
@@ -1958,7 +1958,7 @@ function dayData(d) {
       ? `${lbw.start} → ${lbw.end}`
       : 'first match KO → last match end (TBC — Anastasis sets per KO schedule)';
     data.banners.push({
-      text: `Daily Live Betting Mission — earn SC during the match session (${windowText})`,
+      text: `Daily Live Betting Mission — earn SuperCoins during the match session (${windowText})`,
       redirect: '/supercoins/shop/earn-more',
       usage: 'timed',
       deadline: windowText,
@@ -1975,7 +1975,7 @@ function dayData(d) {
     data.banners.push({ text: 'Raffle banner (open)', redirect: '/supercoins/shop/raffles', usage: 'allday' });
   }
 
-  // Slot 4 — Sheet-driven priority: Store launch > SC Drop > Raffle draw > marquee secondary > suggested
+  // Slot 4 — Sheet-driven priority: Store launch > SuperCoins Drop > Raffle draw > marquee secondary > suggested
   const k = dkey(d);
   const drawsHere = RAFFLES.filter(r => r.draw.startsWith(k));
   let slot4Filled = false;
@@ -2038,7 +2038,7 @@ function dayData(d) {
 
   const isBundleDay = COIN_DROP_DAYS.has(dkey(d));
   const QL_WC_CAL = isBundleDay
-    ? { text: '🎁 World Cup Calendar — <strong>+400 SC bonus inside today</strong> (1,000 SC possible)', tag: 'BUNDLE', redirect: '/supercoins/calendar', usage: 'allday', hero: true }
+    ? { text: '🎁 World Cup Calendar — <strong>+400 SuperCoins bonus inside today</strong> (1,000 SuperCoins possible)', tag: 'BUNDLE', redirect: '/supercoins/calendar', usage: 'allday', hero: true }
     : { text: 'World Cup Calendar', redirect: '/supercoins/calendar', usage: 'allday' };
   const QL_TRILIZA = { text: `🏆 ${trilizaQLText}`, redirect: `/triliza/round-${triliza}`, usage: 'timed', deadline: trilizaDeadline, hero: true };
   const QL_SP = { text: spQLText, redirect: `/predictor/round-${sp.num}`, usage: 'allday', note: 'open for full MD/phase' };
@@ -2064,7 +2064,7 @@ function dayData(d) {
     usage: 'allday'
   } : null;
 
-  // QL ordering: Triliza is HERO F2P → slot 1 by default. SP NEW ROUND day temporarily takes slot 1.
+  // QL ordering: Triliza is HERO F2P → slot 1 by default. SuperPredictor NEW ROUND day temporarily takes slot 1.
   // Raffle Winners is elevated on draw days (live around 17:00) and day-after (recency).
   const winnersQL = QL_WINNERS_DRAWDAY || QL_WINNERS_NEXT;
 
@@ -2142,7 +2142,7 @@ function dayData(d) {
     return 9999;
   }
 
-  // ── 09:00 morning hero newsletter ── combines daily horizon: SP open, raffle open/close, store launch, missions
+  // ── 09:00 morning hero newsletter ── combines daily horizon: SuperPredictor open, raffle open/close, store launch, missions
   const morningParts = [];
   if (m === 6 && day === 11) morningParts.push('🏆 WORLD CUP IS HERE');
   if (m === 6 && day === 28) morningParts.push('Final group day — Triliza tonight, KO bracket reveals tomorrow');
@@ -2152,11 +2152,11 @@ function dayData(d) {
     morningParts.push(`Raffle #${raffleNumPhase} opens`);
     if (raffleNumPhase > 1) morningParts.push(`Last raffle winners announced this afternoon`);
   }
-  raffleAddedComms.forEach(r => morningParts.push(`New in SC Shop: ${r.prize} raffle (${r.cost} SC)`));
+  raffleAddedComms.forEach(r => morningParts.push(`New in SuperCoins Shop: ${r.prize} raffle (${r.cost} SuperCoins)`));
   if (DIRECT_BUYIN_DROPS.has(dkey(d))) {
     morningParts.push(dkey(d) === '6-11' ? 'STORE LAUNCH — jerseys, Cafu signed, Lego trophy live now' : 'STORE RESTOCK live now');
   }
-  if (COIN_DROP_DAYS.has(dkey(d))) morningParts.push('🎁 WC Calendar BONUS today — +400 SC inside, 1,000 SC possible');
+  if (COIN_DROP_DAYS.has(dkey(d))) morningParts.push('🎁 WC Calendar BONUS today — +400 SuperCoins inside, 1,000 SuperCoins possible');
   if (trilizaFx && !trilizaFx.match.startsWith('TBD')) {
     morningParts.push(`Tonight: Triliza Round #${triliza} on ${trilizaFx.match} @ ${trilizaFx.time} (30K jackpot)`);
   }
@@ -2178,9 +2178,9 @@ function dayData(d) {
   if (trilizaFx && !trilizaFx.match.startsWith('TBD')) {
     const caGameShort = (CA_UNIQUE[dkey(d)] || '').split(' (')[0];
     const refreshParts = [];
-    refreshParts.push(`SB Unique: ${trilizaFx.match} SGA → 300 SC`);
-    if (caGameShort) refreshParts.push(`CA Unique: ${caGameShort} → 300 SC`);
-    if (COIN_DROP_DAYS.has(dkey(d))) refreshParts.push('🎁 Calendar bundle: +400 SC (claim inside)');
+    refreshParts.push(`Sportsbook mission: ${trilizaFx.match} SGA → 300 SuperCoins`);
+    if (caGameShort) refreshParts.push(`Casino slot mission: ${caGameShort} → 300 SuperCoins`);
+    if (COIN_DROP_DAYS.has(dkey(d))) refreshParts.push('🎁 Calendar bundle: +400 SuperCoins (claim inside)');
     data.comms.push({
       time: '11:00',
       text: `<strong>Daily missions refresh</strong> — ${refreshParts.join(' · ')}`,
@@ -2201,7 +2201,7 @@ function dayData(d) {
     data.comms.push({
       time: `${String(koMinus3).padStart(2,'0')}:00`,
       text: `<strong>Triliza Round #${triliza}</strong> tonight @ ${trilizaFx.time} on ${trilizaFx.match} — 30K jackpot, 3×3 bingo card (9 outcomes), full card wins. Mission also live.`,
-      channels: 'push (combines Triliza + SB Unique mission)',
+      channels: 'push (combines Triliza + Sportsbook mission)',
       landing: `/triliza/round-${triliza}`,
       combines: 2
     });
@@ -2210,7 +2210,7 @@ function dayData(d) {
   // ── Speed Battles pre-HT push (T-15min before HT) ──
   if (speedB) {
     const sbm = speedBattleMatch(d);
-    data.comms.push({ time: 'HT −15min', text: `<strong>Casino Speed Battles</strong> open at ${sbm} halftime — 15min battles, high frequency, fast SC payouts`, channels: 'push (casino segment)', landing: '/supersocial/speed-battles/live' });
+    data.comms.push({ time: 'HT −15min', text: `<strong>Casino Speed Battles</strong> open at ${sbm} halftime — 15min battles, high frequency, fast SuperCoins payouts`, channels: 'push (casino segment)', landing: '/supersocial/speed-battles/live' });
   }
 
   // ── 17:00 raffle draw — Ilias × Ionut workflow ──
@@ -2247,7 +2247,7 @@ function dayData(d) {
 
   // ── EOD Sunday recap (Jun 14, 21) ──
   if (dow === 0 && phase.key === 'group' && m === 6 && (day === 14 || day === 21)) {
-    data.comms.push({ time: 'EOD', text: '<strong>Weekend recap</strong> — top winners, SC earned, leaderboard standings', channels: 'newsletter', landing: '/supersocial/leaderboards/sports' });
+    data.comms.push({ time: 'EOD', text: '<strong>Weekend recap</strong> — top winners, SuperCoins earned, leaderboard standings', channels: 'newsletter', landing: '/supersocial/leaderboards/sports' });
   }
   // ── EOD wrap on Jun 28 (last group day) ──
   if (m === 6 && day === 28) {
@@ -2317,7 +2317,7 @@ function dayData(d) {
     data.setup.marketing.push('Super Friday LP — confirm Sports + Casino split (Speed Battles day = 7 cards)');
   }
   if (isSPStart) {
-    data.setup.marketing.push('Super Friday LP — "new SuperPredictor round" badge on SP card');
+    data.setup.marketing.push('Super Friday LP — "new SuperPredictor round" badge on SuperPredictor card');
   }
   if (DIRECT_BUYIN_DROPS.has(dkey(d))) {
     data.setup.marketing.push(`Super Friday LP — Store ${dkey(d) === '6-11' ? 'LAUNCH' : 'RESTOCK'} card added (8th card)`);
@@ -2327,15 +2327,15 @@ function dayData(d) {
   const tf = TRILIZA[dkey(d)];
   const caGame = CA_UNIQUE[dkey(d)];
   if (tf && !tf.match.startsWith('TBD')) {
-    data.setup.superCoins.push(`SB Unique mission live: <strong>${tf.match}</strong> SGA (15€ min, odds 3.00+) → 300 SC`);
+    data.setup.superCoins.push(`Sportsbook mission live: <strong>${tf.match}</strong> SGA (15€ min, odds 3.00+) → 300 SuperCoins`);
   }
   if (caGame && !caGame.startsWith('TBD')) {
-    data.setup.superCoins.push(`CA Unique mission live: wager 20€ on <strong>${caGame}</strong> → 300 SC`);
+    data.setup.superCoins.push(`Casino slot mission mission live: wager 20€ on <strong>${caGame}</strong> → 300 SuperCoins`);
   }
-  data.setup.superCoins.push('OUTSIDE Sports: Live-bet 20€ on WC event, odds 2.00+ → 500 SC (recurring)');
-  data.setup.superCoins.push('OUTSIDE Casino: Wager 20€ on Superbet Roulette → 500 SC (recurring)');
+  data.setup.superCoins.push('OUTSIDE Sports: Live-bet 20€ on WC event, odds 2.00+ → 500 SuperCoins (recurring)');
+  data.setup.superCoins.push('OUTSIDE Casino: Wager 20€ on Superbet Roulette → 500 SuperCoins (recurring)');
   if (COIN_DROP_DAYS.has(dkey(d))) {
-    data.setup.superCoins.push('🎁 <strong>SuperCoins Drop bundle day</strong> — extra 400 SC inside Calendar (total 1,000 SC possible). Calendar quicklink gets BUNDLE tag; Calendar card on Super Friday LP gets hero treatment.');
+    data.setup.superCoins.push('🎁 <strong>SuperCoins Drop bundle day</strong> — extra 400 SuperCoins inside Calendar (total 1,000 SuperCoins possible). Calendar quicklink gets BUNDLE tag; Calendar card on Super Friday LP gets hero treatment.');
   }
   if (DIRECT_BUYIN_DROPS.has(dkey(d))) {
     const label = dkey(d) === '6-11' ? 'STORE LAUNCH' : 'STORE RESTOCK';
@@ -2358,7 +2358,7 @@ function dayData(d) {
   // Raffles being added to shop today
   const raffleAdded = RAFFLES.filter(r => r.added === dkey(d));
   raffleAdded.forEach(r => {
-    data.setup.iliasGiorgos.push(`New raffle added to SC Shop: ${r.prize} (${r.cost} SC entry, draws ${r.draw})`);
+    data.setup.iliasGiorgos.push(`New raffle added to SuperCoins Shop: ${r.prize} (${r.cost} SuperCoins entry, draws ${r.draw})`);
   });
 
   // SuperSocial (when relevant)
@@ -2375,7 +2375,7 @@ function dayData(d) {
   }
   // KO planning trigger — last day of Group Stage (Jun 28)
   if (m === 6 && day === 28) {
-    data.setup.anastasis.push('🚨 <strong>KO PLANNING DAY</strong> — lock R32 1up matches, Triliza fixtures, SP Round #4 match, CA Unique games for Jun 29 → Jul 7 (qualifiers now known)');
+    data.setup.anastasis.push('🚨 <strong>KO PLANNING DAY</strong> — lock R32 1up matches, Triliza fixtures, SuperPredictor Round #4 match, Casino slot mission games for Jun 29 → Jul 7 (qualifiers now known)');
     data.setup.iliasGiorgos.push('🚨 Lock Raffle #9–12 draw dates + Cafu Grand Finale schedule');
     data.setup.superCoins.push('🚨 Switch SuperCoins Calendar to KO tournament ID at 10:00');
   }
@@ -2445,15 +2445,15 @@ function buildDayCard(d) {
   }
   if (data.sp) {
     const matchText = data.sp.match ? ` — ${data.sp.match}` : '';
-    ctxRows.push(`<div class="ctx-row"><span class="label sp">SP</span><span class="value">Round #${data.sp.num} "${data.sp.name}"${matchText}</span></div>`);
+    ctxRows.push(`<div class="ctx-row"><span class="label sp">PREDICTOR</span><span class="value">Round #${data.sp.num} "${data.sp.name}"${matchText}</span></div>`);
   }
   // SuperCoins missions
   const caGame = CA_UNIQUE[dkey(d)];
   if (caGame || COIN_DROP_DAYS.has(dkey(d))) {
     let scText = [];
-    if (COIN_DROP_DAYS.has(dkey(d))) scText.push('🎁 SC Drop bundle (+400)');
+    if (COIN_DROP_DAYS.has(dkey(d))) scText.push('🎁 SuperCoins Drop bundle (+400)');
     if (caGame) scText.push(`Slot: ${caGame}`);
-    ctxRows.push(`<div class="ctx-row"><span class="label" style="background:#2E7D32">SC</span><span class="value" style="font-size:10.5px">${scText.join(' · ')}</span></div>`);
+    ctxRows.push(`<div class="ctx-row"><span class="label" style="background:#2E7D32">SuperCoins</span><span class="value" style="font-size:10.5px">${scText.join(' · ')}</span></div>`);
   }
   // Speed Battle
   if (data.speedB) {
@@ -2481,10 +2481,10 @@ function buildDayCard(d) {
         let bg = '#8B949E';
         if (t.includes('1up')) bg = '#F57C00';
         else if (t.includes('Triliza')) bg = '#6F42C1';
-        else if (t.includes('SP')) bg = '#198754';
+        else if (t.includes('SuperPredictor')) bg = '#198754';
         else if (t.includes('Speed')) bg = '#00B0A0';
         else if (t.includes('Boosted')) bg = '#5B9BD5';
-        else if (t.includes('SB Unique')) bg = '#2E7D32';
+        else if (t.includes('Sportsbook mission')) bg = '#2E7D32';
         else if (t.includes('MARQUEE')) bg = '#FFD700';
         else if (t.includes('⚠️')) bg = '#C62828';
         const color = (t.includes('MARQUEE')) ? '#5D4037' : '#fff';
