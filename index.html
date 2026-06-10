@@ -694,7 +694,7 @@ body {
         <p>Default order: <code>🏆 Super Triliza → WC Calendar → SuperPredictor → Pick of the Day → Sports Leaderboards (or Speed Battles) → Bonuses & Promos</code></p>
         <p style="font-size:11px">Triliza is HERO F2P → always slot 1, except SuperPredictor round-start days where SuperPredictor NEW takes slot 1 and Triliza slides to slot 2.</p>
         <ul>
-          <li><strong>SuperPredictor round-start day</strong> (Jun 11, 18, 24, 29 · Jul 8, 14, 18): SuperPredictor → slot 1 (NEW ROUND)</li>
+          <li><strong>SuperPredictor round-start day</strong> (Jun 11, 12, 21, 24 · Jul 8, 14, 18 — day a new round becomes the primary): SuperPredictor → slot 1 (NEW ROUND)</li>
           <li><strong>Phase-start day</strong> (Jun 11, 29 · Jul 8, 14, 18 — subset of above): also Raffle Winners → slot 6 (just closed), Sports Leaderboard tagged NEW PHASE</li>
           <li><strong>Speed Battles day</strong> (Jun 17/20/22/26 only): Speed Battles → slot 5/6 (drop Bonuses & Promos)</li>
           <li><strong>24h before raffle close</strong>: Raffle Winners drops out</li>
@@ -818,6 +818,7 @@ body {
           <li><strong>✅ User confirmed Jul 14 = SF1</strong> + <strong>Jul 18 = 3rd Place</strong> (sheet row 4 was wrong)</li>
           <li><strong>Rest days:</strong> Jul 16, 17 (between SF and 3rd Place)</li>
           <li><strong>✅ 1up day-before rule applied</strong> — 1up offer goes live the day BEFORE its match plays. When the match kicks off, 1up swaps to the next offer. Jun 11 = 1up for Korea-Czechia (plays Jun 12), Jun 12 = 1up for USA-Paraguay (plays Jun 13), etc. Last Group Stage 1up = Jun 27 for Algeria-Austria (plays Jun 28). Knockout 1up swaps cascade: Jul 13=SF1 → Jul 14=SF2 → Jul 15-17=3rd Place → Jul 18=Final.</li>
+          <li><strong>✅ SuperPredictor match-KO rule applied</strong> — each round closes the moment its match kicks off, next round opens immediately. R1 (Mexico vs SA) closes Jun 11 22:00 → R2 opens. R2 (Netherlands vs Sweden) closes Jun 20 20:00 → R3 opens. R3 (Uruguay vs Spain) closes Jun 24 03:00 → R4 opens. R4-R7 transitions TBD (match-dependent).</li>
           <li><strong>Match KO times</strong> — pulled from WC fixture sheet (Greek local time). Mexico vs SA opens Jun 11 22:00. Korea vs Czechia plays Jun 12 05:00 etc.</li>
           <li><strong>1up match dates vs sheet fixture dates</strong> — Sheet places some user 1up matches outside Group Stage (e.g. Norway-France Jul 1, Egypt-Iran Jun 27 morning). Day-before rule maps them per user's Group Stage assumption.</li>
           <li><strong>KO 1up matches, Triliza fixtures, SuperPredictor rounds 4–7 matches, KO missions</strong> — decided on planning days Jun 28 / Jul 3 / Jul 7 / Jul 13 / Jul 17</li>
@@ -862,17 +863,17 @@ body {
     <details>
       <summary>🔢 Round numbering (SuperPredictor + Triliza, with matches)</summary>
       <div class="panel-content">
-        <h4>SuperPredictor — 7 rounds, named matches</h4>
-        <ul>
-          <li><strong>SuperPredictor #1 "Group MD1 Predictor"</strong> · Jun 11→17 · <em>Mexico vs South Africa</em></li>
-          <li><strong>SuperPredictor #2 "Group MD2 Predictor"</strong> · Jun 18→23 · <em>Netherlands vs Sweden</em></li>
-          <li><strong>SuperPredictor #3 "Group MD3 Predictor"</strong> · Jun 24→28 · <em>Uruguay vs Spain</em></li>
-          <li><strong>SuperPredictor #4 "R32 Predictor"</strong> · Jun 29→Jul 7 · TBD</li>
-          <li><strong>SuperPredictor #5 "R16/QF Predictor"</strong> · Jul 8→13 · TBD</li>
-          <li><strong>SuperPredictor #6 "SF Predictor"</strong> · Jul 14→17 · TBD</li>
-          <li><strong>SuperPredictor #7 "Final Predictor"</strong> · Jul 18→19 · TBD</li>
+        <h4>SuperPredictor — 7 rounds. Each round closes at its match KO; next round opens immediately.</h4>
+        <ul style="font-size:11px">
+          <li><strong>#1 "MD1 Predictor"</strong> · <em>Mexico vs South Africa</em> · opens WC start · <strong>closes Jun 11 22:00 (KO)</strong></li>
+          <li><strong>#2 "MD2 Predictor"</strong> · <em>Netherlands vs Sweden</em> · opens Jun 11 22:00 · <strong>closes Jun 20 20:00 (KO)</strong></li>
+          <li><strong>#3 "MD3 Predictor"</strong> · <em>Uruguay vs Spain</em> · opens Jun 20 20:00 · <strong>closes Jun 24 03:00 (KO)</strong></li>
+          <li><strong>#4 "R32 Predictor"</strong> · TBD R32 match · opens Jun 24 03:00 · closes at R32 match KO</li>
+          <li><strong>#5 "R16/QF Predictor"</strong> · TBD · opens at R4 match KO · closes at R16/QF match KO</li>
+          <li><strong>#6 "SF Predictor"</strong> · TBD · opens at R5 match KO · closes at SF match KO</li>
+          <li><strong>#7 "Final Predictor"</strong> · TBD Final match · opens at R6 match KO · <strong>closes Jul 19 (Final KO)</strong></li>
         </ul>
-        <p style="font-size:11px;color:var(--text-light)">SuperPredictor round-open days: Jun 11, 18, 24, 29 · Jul 8, 14, 18</p>
+        <p style="font-size:11px;color:var(--text-light)">SuperPredictor transitions (push fires the moment a round closes & next opens): Jun 11 22:00 · Jun 20 20:00 · Jun 24 03:00 · TBD R4-R7 match KOs.</p>
         <h4>Super Triliza — daily, #1 → #17 in Group Stage (30K jackpot per round)</h4>
         <p style="font-size:11px">Jun 11 = #1 (Mexico vs SA) … Jun 27 = #17 (Croatia vs Ghana 00:00). KO rounds TBD on planning days. Different fixture each day (NOT the 1up match).</p>
       </div>
@@ -1594,15 +1595,27 @@ function trilizaRound(d) {
   return null;
 }
 
-// SuperPredictor round (7 total — 3 in Group Stage, one per matchday; 4 in knockouts, one per phase)
+// SuperPredictor — each round ends when its match KICKS OFF. Next round opens at that moment.
+// 7 rounds total: 3 in Group Stage (MD1/MD2/MD3 — one match per matchday) + R32 + R16/QF + SF + Final.
+// Known round-end timestamps (Group Stage rounds — match KOs from WC_FIXTURES):
+const SP_R1_END = new Date(2026, 5, 11, 22, 0); // Mexico vs SA KO Jun 11 22:00
+const SP_R2_END = new Date(2026, 5, 20, 20, 0); // Netherlands vs Sweden KO Jun 20 20:00
+const SP_R3_END = new Date(2026, 5, 24, 3, 0);  // Uruguay vs Spain KO Jun 24 03:00
+// R4-R7 end times depend on bracket — set on KO planning days
+
 function predictorRound(d) {
+  // Returns the round active around noon of day d (primary round of the day)
+  const noon = new Date(d);
+  noon.setHours(12, 0, 0, 0);
+  if (noon < new Date(2026, 5, 11, 0, 0)) return null;
+  if (noon < SP_R1_END) return { num: 1, name: 'MD1 Predictor', match: SP_MATCHES[1], endsAt: SP_R1_END };
+  if (noon < SP_R2_END) return { num: 2, name: 'MD2 Predictor', match: SP_MATCHES[2], endsAt: SP_R2_END };
+  if (noon < SP_R3_END) return { num: 3, name: 'MD3 Predictor', match: SP_MATCHES[3], endsAt: SP_R3_END };
+  // R4-R7 by phase (KO match TBD — opens at previous round KO)
   const m = d.getMonth() + 1, day = d.getDate();
-  if (m === 6 && day >= 11 && day <= 17) return { num: 1, name: 'Group Stage MD1 Predictor', match: SP_MATCHES[1] };
-  if (m === 6 && day >= 18 && day <= 23) return { num: 2, name: 'Group Stage MD2 Predictor', match: SP_MATCHES[2] };
-  if (m === 6 && day >= 24 && day <= 28) return { num: 3, name: 'Group Stage MD3 Predictor', match: SP_MATCHES[3] };
-  if ((m === 6 && day >= 29) || (m === 7 && day <= 7)) return { num: 4, name: 'Round of 32 Predictor', match: SP_MATCHES[4] };
+  if ((m === 6 && day >= 24) || (m === 7 && day <= 7)) return { num: 4, name: 'R32 Predictor', match: SP_MATCHES[4] };
   if (m === 7 && day >= 8 && day <= 13) return { num: 5, name: 'R16 / QF Predictor', match: SP_MATCHES[5] };
-  if (m === 7 && day >= 14 && day <= 17) return { num: 6, name: 'Semi-Finals Predictor', match: SP_MATCHES[6] };
+  if (m === 7 && day >= 14 && day <= 17) return { num: 6, name: 'SF Predictor', match: SP_MATCHES[6] };
   if (m === 7 && day >= 18 && day <= 19) return { num: 7, name: 'Final Predictor', match: SP_MATCHES[7] };
   return null;
 }
@@ -1613,16 +1626,32 @@ function isPhaseStartDay(d) {
          (m === 7 && day === 14) || (m === 7 && day === 18);
 }
 
+// SuperPredictor transitions happen at match KO; "round-start day" = day a new round becomes primary
+// R1 starts Jun 11 (WC opens, R1 active from morning)
+// R2 starts Jun 12 (R1 closed Jun 11 22:00)
+// R3 starts Jun 21 (R2 closed Jun 20 20:00)
+// R4 starts Jun 24 (R3 closed Jun 24 03:00)
+// R5/R6/R7 use phase-start days (Jul 8, 14, 18)
 function isSPRoundStartDay(d) {
   const m = d.getMonth() + 1, day = d.getDate();
-  return (m === 6 && day === 11) || (m === 6 && day === 18) || (m === 6 && day === 24) ||
-         (m === 6 && day === 29) || (m === 7 && day === 8) ||
+  return (m === 6 && day === 11) || (m === 6 && day === 12) || (m === 6 && day === 21) ||
+         (m === 6 && day === 24) || (m === 7 && day === 8) ||
          (m === 7 && day === 14) || (m === 7 && day === 18);
 }
 
-function isSPRoundEndDay(d) {
+// SuperPredictor "transition" day = day a round ends (= a match plays that closes the round)
+function spRoundTransitionToday(d) {
   const m = d.getMonth() + 1, day = d.getDate();
-  return (m === 6 && day === 17) || (m === 6 && day === 23) || (m === 6 && day === 28) ||
+  if (m === 6 && day === 11) return { fromRound: 1, toRound: 2, atTime: '22:00', match: SP_MATCHES[1], newMatch: SP_MATCHES[2] };
+  if (m === 6 && day === 20) return { fromRound: 2, toRound: 3, atTime: '20:00', match: SP_MATCHES[2], newMatch: SP_MATCHES[3] };
+  if (m === 6 && day === 24) return { fromRound: 3, toRound: 4, atTime: '03:00', match: SP_MATCHES[3], newMatch: SP_MATCHES[4] };
+  return null;
+}
+
+function isSPRoundEndDay(d) {
+  // Day where today's primary round ENDS or tomorrow's primary round STARTS
+  const m = d.getMonth() + 1, day = d.getDate();
+  return (m === 6 && day === 11) || (m === 6 && day === 20) || (m === 6 && day === 23) ||
          (m === 7 && day === 7) || (m === 7 && day === 13) ||
          (m === 7 && day === 17) || (m === 7 && day === 19);
 }
@@ -1690,6 +1719,20 @@ function scheduledActions(d) {
       action: `<strong>1up activates for the first time</strong>: <strong>${todayMatchTxt}</strong> <span style="color:#586069">(plays tomorrow)</span>`,
       detail: '1up banner + LP + quicklink go live with day-before-match offer.',
       owner: 'Anastasis'
+    });
+  }
+
+  // ── SuperPredictor round transition (closes at match KO, next opens immediately) ──
+  const spTrans = spRoundTransitionToday(d);
+  if (spTrans) {
+    const [hh, mm] = spTrans.atTime.split(':').map(Number);
+    items.push({
+      time: spTrans.atTime,
+      sortTime: hh * 60 + mm,
+      icon: '🎮',
+      action: `<strong>SuperPredictor Round #${spTrans.fromRound} closes</strong> (${spTrans.match} kicks off) → <strong>Round #${spTrans.toRound} opens</strong>: ${spTrans.newMatch}`,
+      detail: `Push "New SuperPredictor Round #${spTrans.toRound} live — predict ${spTrans.newMatch}" the moment the round opens. Update LP card, banner copy, and quicklink.`,
+      owner: 'Anastasis / CMS'
     });
   }
 
@@ -2491,15 +2534,17 @@ function buildDayCard(d) {
   }
   if (data.sp) {
     let matchText = '';
+    let closesText = '';
     if (data.sp.match) {
       if (data.sp.match.startsWith('TBD')) {
         matchText = ` — ${data.sp.match}`;
       } else {
         const spKO = findMatchKO(data.sp.match);
-        matchText = ` — ${data.sp.match}<span style="color:#586069;font-size:9.5px">${fmtKOLabel(spKO, d)}</span>`;
+        matchText = ` — ${data.sp.match}`;
+        closesText = ` <span style="color:#586069;font-size:9.5px">· closes at KO${fmtKOLabel(spKO, d)}</span>`;
       }
     }
-    ctxRows.push(`<div class="ctx-row"><span class="label sp">PREDICTOR</span><span class="value">Round #${data.sp.num} "${data.sp.name}"${matchText}</span></div>`);
+    ctxRows.push(`<div class="ctx-row"><span class="label sp">PREDICTOR</span><span class="value">Round #${data.sp.num} "${data.sp.name}"${matchText}${closesText}</span></div>`);
   }
   // SuperCoins missions
   const caGame = CA_UNIQUE[dkey(d)];
