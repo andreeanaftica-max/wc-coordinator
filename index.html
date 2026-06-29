@@ -823,6 +823,8 @@ body {
           <li><strong>1up match dates vs sheet fixture dates</strong> — Sheet places some user 1up matches outside Group Stage (e.g. Norway-France Jul 1, Egypt-Iran Jun 27 morning). Day-before rule maps them per user's Group Stage assumption.</li>
           <li><strong>✅ Sheet refresh Jun 11:</strong> Raffle dates 9–11 confirmed (France Jun 29 ⚠️, Portugal Jun 30, Spain Jun 29); Lego Trophy price updated 15K→18K SuperCoins; Casino slot missions filled in for Jul 13–19.</li>
           <li><strong>✅ Flashscore refresh Jun 27:</strong> R32 fixtures with confirmed teams + times — Jun 28 22:00 South Africa vs Canada · Jun 29 20:00 Brazil vs Japan · Jun 29 23:30 Germany vs Paraguay · Jun 30 04:00 Netherlands vs Morocco · Jun 30 20:00 Côte d'Ivoire vs Norway · Jul 1 00:00 France vs Sweden · Jul 2 03:00 USA vs Bosnia · Jul 3 21:00 Australia vs Egypt · Jul 4 01:00 Argentina vs Cape Verde. (9 of 16 R32 matches visible.)</li>
+          <li><strong>✅ Sheet refresh Jun 27 — new items:</strong> Store restock actual shop-add date corrected to <strong>Jun 30</strong> (was Jun 25 = decision date); new shop items added — <strong>Germany / Argentina / France / Spain / Portugal jerseys</strong>; SF + Final Coin Drop windows confirmed (Jul 14, 15, 19); raffle #12 Cafu Grand Finale tier confirmed at 250 SuperCoins (draw date still TBD); new mission template "wager 30€ on live/accas/BB → 500 SuperCoins" (KO higher-tier); SF/Final/QF CRM offer copy drafted.</li>
+          <li><strong>🔴 Sheets NOT yet updated for KO 1up / Triliza / SuperPredictor matches.</strong> The CRM master sheet shows placeholder rows but no fixture assignments for KO. Sportsbook + Casino slot missions Jun 28 → Jul 12 also still empty. Anastasis needs to populate KO data — for now the brief defaults to "TBD daily pick" for these.</li>
           <li><strong>⚠️ Sheet conflict — France raffle:</strong> column says 26/06, detail text says 29/06. Using 29/06 here. Confirm with the team.</li>
           <li><strong>Still TBD after refresh:</strong> KO 1up matches (sheet still "Knock-out TBD"); KO Triliza fixtures; KO SuperPredictor rounds 4–7 matches; KO Sportsbook missions Jun 29 → Jul 12; SF / 3rd Place / Final teams; Cafu Grand Finale dates; Sports Leaderboard prize pools; Casino Tournament dates.</li>
           <li><strong>14 Jun Casino slot mission Greek copy</strong> — references "Legacy of Dead" instead of "40 Super Hot"</li>
@@ -1107,8 +1109,8 @@ const COIN_DROP_WINDOWS = [
   { start: '7-19', end: '7-20', label: 'FINAL — starts 00:01' }
 ];
 
-// Direct buy-in drop days (jersey store releases)
-const DIRECT_BUYIN_DROPS = new Set(['6-11', '6-25']);
+// Direct buy-in drop days (jersey store releases) — restock actual shop-add date = Jun 30 per Jun 27 refresh
+const DIRECT_BUYIN_DROPS = new Set(['6-11', '6-30']);
 
 // Live Betting Mission daily window — computed from real fixture schedule.
 // "Consecutive session" = first match KO → last match end (+~2h for full 90 min + extra time).
@@ -1181,16 +1183,17 @@ const CASINO_TOURNAMENTS = [
   '10,000€ Endorphina Tournament'
 ];
 
-// Direct buy-in items by drop date (jersey store) — per latest sheet refresh
+// Direct buy-in items by drop date (jersey store) — refreshed Jun 27
 const BUYIN_ITEMS = {
   '6-11': [
     'Brazil Jersey signed by Cafu × 1 — 26,000 SuperCoins',
     'Lego WC Trophy × 1 — 18,000 SuperCoins',
     '11 jerseys (Eng, Cro, Ger, Arg, Fra, Por, Mex, Esp, Uru, Ned, Bra) × 2 each — 12,000 SuperCoins each'
   ],
-  '6-25': [
+  '6-30': [
     'Restock: Lego Trophy × 2 — 18,000 SuperCoins',
-    'Restock: 11 jerseys × 2 each — 12,000 SuperCoins (no Cafu restock)'
+    'Restock: 11 jerseys × 2 each — 12,000 SuperCoins (no Cafu restock)',
+    'New: Germany / Argentina / France / Spain / Portugal jerseys added to shop'
   ]
 };
 
