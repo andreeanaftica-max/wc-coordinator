@@ -1062,7 +1062,13 @@ const TRILIZA = {
   '6-25': { match: 'Ecuador vs Germany', time: '23:00' },
   '6-26': { match: 'Norway vs France', time: '22:00' },
   '6-27': { match: 'Croatia vs Ghana', time: '00:00' },
-  '6-28': { match: 'TBD (final group day — set Jun 28)', time: 'TBD' }
+  // R32 Triliza fixtures per Anastasis's sheet (Jun 27 refresh)
+  '6-28': { match: 'South Africa vs Canada', time: '22:00' },
+  '6-29': { match: 'Netherlands vs Marocco', time: '04:00' },
+  '6-30': { match: 'France vs Sweden', time: '00:00' },
+  '7-1': { match: 'Belgium vs Senegal', time: '23:00' },
+  '7-2': { match: 'Spain vs Austria', time: '22:00' },
+  '7-3': { match: 'Argentina vs Cape Verde', time: '01:00' }
 };
 
 // SuperCoins Casino slot mission missions (daily slot — wager 20€ → 300 coins)
@@ -1160,15 +1166,15 @@ const RAFFLES = [
   { num: 12, prize: 'Brazil Cafu Jersey — Grand Finale', cost: 250, added: 'TBD', draw: 'TBD' }
 ];
 
-// SuperPredictor rounds with named match (from sheet)
+// SuperPredictor rounds with named match — refreshed Jun 27 from Anastasis's sheet
 const SP_MATCHES = {
   1: 'Mexico vs South Africa',
   2: 'Netherlands vs Sweden',
   3: 'Uruguay vs Spain',
-  4: 'TBD (R32 — set 28 Jun)',
-  5: 'TBD (R16/QF — set 7 Jul)',
-  6: 'TBD (SF — set after QFs)',
-  7: 'TBD (Final — set after SFs)'
+  4: 'Colombia vs Ghana (02:00)',
+  5: 'TBD (R16/QF — populated after R32 ends)',
+  6: 'TBD (SF — populated after QFs)',
+  7: 'TBD (Final — populated after SFs)'
 };
 
 // Casino tournaments (8 weekly, prize pools known, exact dates TBC)
@@ -1573,40 +1579,42 @@ const MARQUEE_DAYS = new Set([
   '2026-7-19'  // Final
 ]);
 
-// 1up calendar — day-before rule: 17 user matches start Jun 11, match plays next day.
-// Group Stage Jun 11-28. Last 1up Jun 27 (Algeria-Austria), match plays Jun 28.
+// 1up calendar — per Anastasis's sheet (last refresh Jun 27).
+// Sheet convention: 1up entry appears in the column of the day the 1up is offered/active.
+// Group Stage 1ups run Jun 12 → Jun 28 (17 matches). R32 partially populated (Jun 29 → Jul 2).
+// R16 onwards populated after each phase ends.
 function oneUpFor(d) {
   const m = d.getMonth() + 1, day = d.getDate();
   if (m === 6) {
-    if (day === 11) return 'Korea vs Czechia'; // plays Jun 12
-    if (day === 12) return 'USA vs Paraguay'; // plays Jun 13
-    if (day === 13) return 'Brazil vs Marocco'; // plays Jun 14
-    if (day === 14) return 'Sweden vs Tunisia'; // plays Jun 15
-    if (day === 15) return 'Iran vs New Zealand'; // plays Jun 16
-    if (day === 16) return 'Austria vs Jordan'; // plays Jun 17
-    if (day === 17) return 'Uzbekistan vs Colombia'; // plays Jun 18
-    if (day === 18) return 'Mexico vs Korea'; // plays Jun 19
-    if (day === 19) return 'Turkey vs Paraguay'; // plays Jun 20
-    if (day === 20) return 'Tunisia vs Japan'; // plays Jun 21
-    if (day === 21) return 'Argentina vs Austria'; // plays Jun 22
-    if (day === 22) return 'Jordan vs Algeria'; // plays Jun 23
-    if (day === 23) return 'Colombia vs Congo'; // plays Jun 24
-    if (day === 24) return 'Czechia vs Mexico'; // plays Jun 25
-    if (day === 25) return 'Norway vs France'; // plays Jun 26
-    if (day === 26) return 'Egypt vs Iran'; // plays Jun 27
-    if (day === 27) return 'Algeria vs Austria'; // plays Jun 28 (last 1up of Group Stage)
-    if (day === 28) return '__TBD_DAILY__'; // last Group Stage day — 1up for R32 first match
-    if (day === 29) return '__TBD_DAILY__'; // R32 starts — daily TBD picks
-    if (day === 30) return '__TBD_DAILY__';
+    if (day === 12) return 'Korea vs Czechia';
+    if (day === 13) return 'USA vs Paraguay';
+    if (day === 14) return 'Brazil vs Marocco';
+    if (day === 15) return 'Sweden vs Tunisia';
+    if (day === 16) return 'Iran vs New Zealand';
+    if (day === 17) return 'Austria vs Jordan';
+    if (day === 18) return 'Uzbekistan vs Colombia';
+    if (day === 19) return 'Mexico vs Korea';
+    if (day === 20) return 'Turkey vs Paraguay';
+    if (day === 21) return 'Tunisia vs Japan';
+    if (day === 22) return 'Uruguay vs Cabo Verde';
+    if (day === 23) return 'Argentina vs Austria';
+    if (day === 24) return 'Colombia vs Congo';
+    if (day === 25) return 'Czechia vs Mexico';
+    if (day === 26) return 'Turkey vs USA';
+    if (day === 27) return 'Norway vs France';
+    if (day === 28) return 'Algeria vs Austria';
+    if (day === 29) return 'Brazil vs Japan';                       // R32 confirmed
+    if (day === 30) return 'Côte d\'Ivoire vs Norway (20:00)';      // R32 confirmed
   }
   if (m === 7) {
-    if (day >= 1 && day <= 12) return '__TBD_DAILY__'; // R32 / R16 / QF days — daily picks
-    if (day === 13) return '__TBD_SF1__'; // SF1 plays Jul 14
-    if (day === 14) return '__TBD_SF2__'; // SF2 plays Jul 15 (after SF1 KO, swap to SF2)
-    if (day === 15) return '__TBD_3RD__'; // 3rd Place plays Jul 18 (after SF2 KO, swap)
-    if (day === 16) return '__TBD_3RD__'; // rest day — 3rd Place still upcoming
-    if (day === 17) return '__TBD_3RD__'; // day before 3rd Place
-    if (day === 18) return '__TBD_FINAL__'; // Final plays Jul 19 (after 3rd Place KO, swap)
+    if (day === 1) return '__TBD_DAILY__';                          // R32 — sheet blank
+    if (day === 2) return 'Portugal vs Croatia';                    // R32 confirmed
+    if (day >= 3 && day <= 7) return '__TBD_DAILY__';                // R32/R16 — populated after phase ends
+    if (day >= 8 && day <= 12) return '__TBD_DAILY__';               // R16/QF — populated after R32 ends
+    if (day === 13) return '__TBD_SF1__';
+    if (day === 14) return '__TBD_SF2__';
+    if (day >= 15 && day <= 17) return '__TBD_3RD__';
+    if (day === 18) return '__TBD_FINAL__';
   }
   return null;
 }
